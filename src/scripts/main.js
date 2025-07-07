@@ -1,31 +1,5 @@
 'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const dashboard = document.querySelector('.dashboard');
-  const blockedKeys = ['fatherName', 'motherName', 'slug'];
-
-  for (const person of people) {
-    const createdRow = document.createElement('tr');
-
-    dashboard.appendChild(createdRow);
-
-    person.sex = person.sex === 'm' ? 'Male' : 'Female';
-    person.age = person.died - person.born;
-    person.century = Math.ceil(person.died / 100);
-
-    for (const key in person) {
-      if (blockedKeys.includes(key)) {
-        continue;
-      }
-
-      const createdCeil = document.createElement('td');
-
-      createdCeil.textContent = person[key];
-      createdRow.appendChild(createdCeil);
-    }
-  }
-});
-
 const people = [
   {
     name: 'Carolus Haverbeke',
@@ -379,3 +353,29 @@ const people = [
     slug: 'jacobus-bernardus-van-brussel-1736',
   },
 ];
+
+document.addEventListener('DOMContentLoaded', () => {
+  const dashboard = document.querySelector('.dashboard');
+  const blockedKeys = ['fatherName', 'motherName', 'slug'];
+
+  for (const person of people) {
+    const createdRow = document.createElement('tr');
+
+    dashboard.appendChild(createdRow);
+
+    person.sex = person.sex === 'm' ? 'Male' : 'Female';
+    person.age = person.died - person.born;
+    person.century = Math.ceil(person.died / 100);
+
+    for (const key in person) {
+      if (blockedKeys.includes(key)) {
+        continue;
+      }
+
+      const createdCeil = document.createElement('td');
+
+      createdCeil.textContent = person[key];
+      createdRow.appendChild(createdCeil);
+    }
+  }
+});
